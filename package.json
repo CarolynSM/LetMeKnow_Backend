@@ -1,0 +1,25 @@
+{
+  "name": "lmk-backend",
+  "version": "1.0.0",
+  "description": "RSVP App",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarolynSM/LetMeKnow_Backend.git"
+  },
+  "author": "Carolyn Selheim-Miller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarolynSM/LetMeKnow_Backend/issues"
+  },
+  "homepage": "https://github.com/CarolynSM/LetMeKnow_Backend#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "knex": "^0.14.2",
+    "pg": "^7.4.1"
+  }
+}
