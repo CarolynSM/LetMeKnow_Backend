@@ -5,10 +5,10 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 
-app.get("/resolutions", (request, response) => {
+app.get("/invite", (request, response) => {
   queries
     .list()
-    .then(resolutions => {
+    .then(invite => {
       response.json({ resolutions });
     })
     .catch(console.error);

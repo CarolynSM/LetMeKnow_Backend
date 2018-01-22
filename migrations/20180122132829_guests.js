@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments("id").primary();
     table.text("name").notNullable();
     table.text("guestOf").notNullable();
+    table.integer("guestOfId").notNullable();
   });
 };
 
