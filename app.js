@@ -7,32 +7,59 @@ app.use(bodyParser.json());
 
 app.get("/invite", (request, response) => {
   queries
-    .list()
+    .list("invite")
     .then(invite => {
-      response.json({ resolutions });
+      response.json({ invite });
     })
     .catch(console.error);
 });
 
-app.get("/resolutions/:id", (request, response) => {
+app.get("/guests", (request, response) => {
   queries
-    .read(request.params.id)
-    .then(resolution => {
-      resolution ? response.json({ resolution }) : response.sendStatus(404);
+    .list("guests")
+    .then(guests => {
+      response.json({ guests });
     })
     .catch(console.error);
 });
 
-app.post("/resolutions", (request, response) => {
+app.get("/invite/:id", (request, response) => {
+  queries
+    .read(request.params.id, "invite")
+    .then(invite => {
+      invite ? response.json({ invite }) : response.sendStatus(404);
+    })
+    .catch(console.error);
+});
+
+app.get("/guests/:id", (request, response) => {
+  queries
+    .read(request.params.id, "guests")
+    .then(guests => {
+      guests ? response.json({ guests }) : response.sendStatus(404);
+    })
+    .catch(console.error);
+});
+
+app.post("/invite", (request, response) => {
   queries
     .create(request.body)
-    .then(resolution => {
-      response.status(201).json({ resolution: resolution });
+    .then(invite => {
+      response.status(201).json({ invite: invite });
     })
     .catch(console.error);
 });
 
-app.delete("/resolutions/:id", (request, response) => {
+app.post("/guests", (request, response) => {
+  queries
+    .create(request.body)
+    .then(guests => {
+      response.status(201).json({ guests: guests });
+    })
+    .catch(console.error);
+});
+
+app.delete("/invite/:id", (request, response) => {
   queries
     .delete(request.params.id)
     .then(() => {
@@ -41,11 +68,20 @@ app.delete("/resolutions/:id", (request, response) => {
     .catch(console.error);
 });
 
-app.put("/resolutions/:id", (request, response) => {
+app.put("/invite/:id", (request, response) => {
   queries
     .update(request.params.id, request.body)
-    .then(resolution => {
-      response.json({ resolution: resolution[0] });
+    .then(invite => {
+      response.json({ invite: invite[0] });
+    })
+    .catch(console.error);
+});
+
+app.put("/guests/:id", (request, response) => {
+  queries
+    .update(request.params.id, request.body)
+    .then(guests => {
+      response.json({ guests: resolution[0] });
     })
     .catch(console.error);
 });
