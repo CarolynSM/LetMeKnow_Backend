@@ -7,27 +7,27 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", (response, request) => {
-  .list("invite")
-  .then(invite => {
-    queries.list("guests").then(guests => {
-      response.json({
-        invite: invite,
-        guests: guests
-      })
-    })
-  })
-  .catch(error => console.log(error));
-})
-
-// app.get("/invite", (request, response) => {
-//   queries
-//     .list("invite")
-//     .then(invite => {
-//       response.json({ invite });
+// app.get("/", (response, request) => {
+//   .list("invite")
+//   .then(invite => {
+//     queries.list("guests").then(guests => {
+//       response.json({
+//         invite: invite,
+//         guests: guests
+//       })
 //     })
-//     .catch(error => console.log(error));
-// });
+//   })
+//   .catch(error => console.log(error));
+// })
+
+app.get("/invite", (request, response) => {
+  queries
+    .list("invite")
+    .then(invite => {
+      response.json({ invite });
+    })
+    .catch(error => console.log(error));
+});
 
 app.get("/guests", (request, response) => {
   queries
