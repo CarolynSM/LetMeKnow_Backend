@@ -20,14 +20,14 @@ app.get("/", (response, request) => {
   .catch(error => console.log(error));
 })
 
-app.get("/invite", (request, response) => {
-  queries
-    .list("invite")
-    .then(invite => {
-      response.json({ invite });
-    })
-    .catch(error => console.log(error));
-});
+// app.get("/invite", (request, response) => {
+//   queries
+//     .list("invite")
+//     .then(invite => {
+//       response.json({ invite });
+//     })
+//     .catch(error => console.log(error));
+// });
 
 app.get("/guests", (request, response) => {
   queries
