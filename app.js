@@ -26,7 +26,7 @@ app.get("/invite", (request, response) => {
     .then(invite => {
       response.json({ invite });
     })
-    .catch(console.error);
+    .catch(error => console.log(error));
 });
 
 app.get("/guests", (request, response) => {
