@@ -10,14 +10,14 @@ app.use(cors());
 app.get("/", (response, request) => {
   queries
     .list("invite")
-    .then(invite => {
-      queries.list("guests").then(guests => {
+    .then(invite =>
+      queries.list("guests").then(guests =>
         response.json({
           invite: invite,
           guests: guests
-        });
-      });
-    })
+        })
+      )
+    )
     .catch(error => console.log(error));
 });
 
