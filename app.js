@@ -7,8 +7,18 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", (response, request) => {
-  response.json("it works");
+app.get("/data", (response, request) => {
+  queries
+    .list("invite")
+    .then(invite =>
+      queries.list("guests").then(guests =>
+        response.json({
+          invite: invite,
+          guests: guests
+        })
+      )
+    )
+    .catch(error => console.log(error));
 });
 
 app.get("/invite", (request, response) => {
