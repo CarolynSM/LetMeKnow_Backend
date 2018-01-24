@@ -1,11 +1,11 @@
 const express = require("express");
-const cors = require("cors");
 const app = express();
+const cors = require("cors");
 const queries = require("./queries");
 const bodyParser = require("body-parser");
 
-app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.json());
 
 app.get("/data", (response, request) => {
   queries
