@@ -68,7 +68,7 @@ app.post("/invite", (request, response) => {
 
 app.post("/guests", (request, response) => {
   queries
-    .create(request.body)
+    .createGuest(request.body)
     .then(guests => {
       response.status(201).json({ guests: guests });
     })
@@ -96,9 +96,9 @@ app.put("/invite/:id", (request, response) => {
 
 app.put("/guests/:id", (request, response) => {
   queries
-    .update(request.params.id, request.body)
+    .updateGuests(request.params.id, request.body)
     .then(guests => {
-      response.json({ guests: guests[0] });
+      response.json({ message: "success" });
     })
     .catch(console.error);
 });

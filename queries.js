@@ -15,12 +15,24 @@ module.exports = {
       .returning("*")
       .then(record => record[0]);
   },
+  createGuest(invite) {
+    return database("guests")
+      .insert(invite)
+      .returning("*")
+      .then(record => record[0]);
+  },
   updateInvites(id, request) {
     return database("invite")
       .update(request)
       .where("id", id)
+      .returning("*");
+  },
+  updateGuests(id, request) {
+    return database("guests")
+      .update(request)
+      .where("id", id)
       .returning("*")
-      .then(record => [0]);
+      .then(record => record[0]);
   },
   delete(id) {
     return database("invite")
