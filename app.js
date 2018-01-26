@@ -97,7 +97,7 @@ app.put("/guests/:id", (request, response) => {
   queries
     .update(request.params.id, request.body)
     .then(guests => {
-      response.json({ guests: resolution[0] });
+      response.json({ guests: guests[0] });
     })
     .catch(console.error);
 });
