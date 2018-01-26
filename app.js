@@ -85,10 +85,11 @@ app.delete("/invite/:id", (request, response) => {
 });
 
 app.put("/invite/:id", (request, response) => {
+  console.log("request.body", request.body, "request.params.id", request.params.id);
   queries
-    .update(request.params.id, request.body)
+    .updateInvites(request.params.id, request.body)
     .then(invite => {
-      response.json({ invite: invite[0] });
+      response.json({ message: "success" });
     })
     .catch(console.error);
 });

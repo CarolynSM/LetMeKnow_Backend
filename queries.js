@@ -15,9 +15,9 @@ module.exports = {
       .returning("*")
       .then(record => record[0]);
   },
-  update(id, table) {
-    return database(table)
-      .update(table)
+  updateInvites(id, request) {
+    return database("invite")
+      .update(request)
       .where("id", id)
       .returning("*")
       .then(record => [0]);
