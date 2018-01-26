@@ -77,7 +77,16 @@ app.post("/guests", (request, response) => {
 
 app.delete("/invite/:id", (request, response) => {
   queries
-    .delete(request.params.id)
+    .deleteInvite(request.params.id)
+    .then(() => {
+      response.sendStatus(204);
+    })
+    .catch(console.error);
+});
+
+app.delete("/guests/:id", (request, response) => {
+  queries
+    .deleteGuest(request.params.guestOfId)
     .then(() => {
       response.sendStatus(204);
     })

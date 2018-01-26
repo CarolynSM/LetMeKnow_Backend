@@ -34,12 +34,14 @@ module.exports = {
       .returning("*")
       .then(record => record[0]);
   },
-  delete(id) {
-    return database("guests")
-      .where("guestOfId", id)
-      .del();
+  deleteInvite(id) {
     return database("invite")
       .where("id", id)
+      .del();
+  },
+  deleteGuest(id) {
+    return database("guests")
+      .where("guestOfId", id)
       .del();
   }
 };
